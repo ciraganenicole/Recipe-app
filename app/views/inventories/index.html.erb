@@ -1,0 +1,14 @@
+<div class="m-5">
+  <div class="d-flex justify-content-end">
+     <%= link_to 'Add New Inventory', new_inventory_path, class: "btn btn-primary mb-3" %>
+  </div>
+  <% @inventories.each do |inventory| %>
+    <div class="d-flex flex-row justify-content-between card p-3 mb-3">
+      <div>
+        <h2><%= inventory.name%></h2>
+        <%= button_to 'REMOVE', inventory_path(inventory.id), method: :delete, class: 'btn btn-link' %>
+      </div>
+      <p> <%= inventory.description%></p>
+    </div>
+  <% end%>
+</div>
