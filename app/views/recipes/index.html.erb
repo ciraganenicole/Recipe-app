@@ -3,7 +3,7 @@
     <div class="d-flex flex-row justify-content-between card p-3 mb-3 ">
       <div>
         <h2><%= recipe.name%></h2>
-        <%= link_to 'REMOVE', recipe_path(recipe.id), method: :delete %>
+        <%= button_to 'REMOVE', recipe_path(recipe.id), method: :delete %>
       </div>
       <p> <%= recipe.description%></p>
     </div>
