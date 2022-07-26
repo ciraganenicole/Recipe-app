@@ -1,0 +1,8 @@
+<h1>Add New Recipe</h1>
+<%= bootstrap_form_with(model: @recipe, url: recipes_path) do |form| %>
+  <%= form.text_field :name, placeholder: 'Enter name' %>
+  <%= form.text_area :description, size: "20x5", placeholder: 'Add description...' %>
+  <%= form.number_field :preparation_time, step: :any, placeholder: 'Preparation time' %>
+  <%= form.number_field :cooking_time, step: :any, placeholder: 'Cooking time' %>
+  <%= form.submit 'Save Recipe' %>
+<% end %>

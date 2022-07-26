@@ -1,9 +1,12 @@
 <div class="m-5">
+  <div class="d-flex justify-content-end">
+     <%= link_to 'Add New Recipe', new_recipe_path, class: "btn btn-primary mb-3" %>
+  </div>
   <% @recipes.each do |recipe| %>
-    <div class="d-flex flex-row justify-content-between card p-3 mb-3 ">
+    <div class="d-flex flex-row justify-content-between card p-3 mb-3">
       <div>
         <h2><%= recipe.name%></h2>
-        <%= button_to 'REMOVE', recipe_path(recipe.id), method: :delete %>
+        <%= button_to 'REMOVE', recipe_path(recipe.id), method: :delete, class: 'btn btn-link' %>
       </div>
       <p> <%= recipe.description%></p>
     </div>

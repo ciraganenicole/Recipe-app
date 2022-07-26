@@ -8,7 +8,12 @@ class RecipesController < ApplicationController
   end
 
   def create
-    recipe = Recipe.new(recipe_params)
+    current_user = User.first
+    unless current_user.present?
+      flash[:error] = 'Error: You have to sign in first!'
+      redirect_to recipes_path
+    end
+    recipe = Recipe.new(recipe_params.merge(user: current_user))
     respond_to do |format|
       format.html do
         if recipe.save
@@ -36,6 +41,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require('recipe').permit(:name, :description, :cooking_time, :prep_time)
+    params.require('recipe').permit(:name, :description, :cooking_time, :preparation_time)
   end
 end
