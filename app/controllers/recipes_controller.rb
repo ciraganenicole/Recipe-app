@@ -1,6 +1,11 @@
 class RecipesController < ApplicationController
+  before_action do
+    # No current_user for now
+    @user = User.first
+  end
+
   def index
-    @recipes = Recipe.all
+    @recipes = @user.recipes
   end
 
   def new
@@ -8,12 +13,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    current_user = User.first
-    unless current_user.present?
-      flash[:error] = 'Error: You have to sign in first!'
-      redirect_to recipes_path
-    end
-    recipe = Recipe.new(recipe_params.merge(user: current_user))
+    recipe = Recipe.new(recipe_params.merge(user: @user))
     respond_to do |format|
       format.html do
         if recipe.save
