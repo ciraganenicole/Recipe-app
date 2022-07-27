@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :recipes, except: [:update]
+  
+  get '/public_recipes', to: 'recipes#public_recipes', as: 'public_recipes'
 end
