@@ -5,7 +5,7 @@
   <% @recipes.each do |recipe| %>
     <div class="d-flex flex-row justify-content-between card p-3 mb-3">
       <div>
-        <h2><%= recipe.name%></h2>
+        <h2><%= link_to recipe.name, recipe_path(recipe.id) %></h2>
         <%= button_to 'REMOVE', recipe_path(recipe.id), method: :delete, class: 'btn btn-link' %>
       </div>
       <p> <%= recipe.description%></p>
