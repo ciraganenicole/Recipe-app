@@ -1,3 +1,6 @@
+<% if @user.present?%>
+  <%= render "layouts/log_out" %>
+<% end %>
 <div class="m-5">
   <div class="d-flex justify-content-end">
      <%= link_to 'Add New Recipe', new_recipe_path, class: "btn btn-primary mb-3" %>

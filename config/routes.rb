@@ -6,6 +6,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  devise_scope :user do
+    authenticated :user do
+      root to: 'recipes#index'
+    end
+    unauthenticated :user do
+      root to: 'devise/registrations#new', as: :unauthenticated_root
+    end
+  end
 
   resources :recipes, except: [:update]
   
