@@ -10,7 +10,6 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    p params[:recipe]
   end
 
   def create
@@ -37,10 +36,6 @@ class RecipesController < ApplicationController
     recipe.destroy
     flash[:success] = 'Recipe successfully deleted'
     redirect_to recipes_path
-  end
-
-  def public_recipes
-    @recipes = Recipe.where(public: true).all.order('created_at DESC')
   end
 
   private
