@@ -1,0 +1,6 @@
+<h1>Add New Inventory</h1>
+<%= bootstrap_form_with(model: @inventory, url: inventories_path) do |form| %>
+  <%= form.text_field :name, placeholder: 'Enter name' %>
+  <%= form.text_area :description, size: "20x5", placeholder: 'Add description...' %>
+  <%= form.submit 'Save Inventory' %>
+<% end %>
