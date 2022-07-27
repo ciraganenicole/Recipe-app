@@ -1,0 +1,37 @@
+<nav class="flex px-8 py-4 justify-between items-center gap-12 border-b-2 border-sky-700 bg-sky-300">
+
+  <div class="left-side flex gap-3 items-center w-fit">
+    <%=bootstrap_form_with url: root_path, method: :get do %>
+      <button class="text-sky-600">Home</button>
+    <% end %>
+    <% if current_user.present? %>
+      <%=bootstrap_form_with url: recipes_path, method: :get do %>
+        <button class="text-sky-600">Recipes</button>
+      <% end %>
+      <%=bootstrap_form_with url: foods_path, method: :get do %>
+        <button class="text-sky-600">Foods</button>
+      <% end %>
+      <%=bootstrap_form_with url: inventories_path, method: :get do %>
+        <button class="text-sky-600">Inventories</button>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="righ-side flex gap-3 items-center w-fit">
+    <% unless current_user.present? %>
+    <%=bootstrap_form_with model: User.new, url: new_user_session_path, method: :get do %>
+      <button class="text-sky-600">Sign in</button>
+    <% end %>
+    <%=bootstrap_form_with model: User.new, url: new_user_registration_path, method: :get do %>
+      <button class="text-sky-600">Sign up</button>
+    <% end %>
+  <% end %>
+  <% if current_user.present? %>
+    <span class="text-lg text-blue-800">
+      <%= current_user.email %>
+    </span>
+    <%=bootstrap_form_with model: User.new, url: destroy_user_session_path, method: :delete do %> 
+      <button class="text-red-600">Sign out</button>
+    <% end %>
+  <% end %>
+  </div>
+</nav>
