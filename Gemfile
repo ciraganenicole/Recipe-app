@@ -76,3 +76,4 @@ group :test do
 end
 
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'rubocop', '>= 1.0', '< 2.0'
