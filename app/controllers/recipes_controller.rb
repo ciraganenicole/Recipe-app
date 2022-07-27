@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    p params[:recipe]
   end
 
   def create
