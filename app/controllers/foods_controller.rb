@@ -9,10 +9,10 @@ class FoodsController < ActionController::Base
     respond_to do |format|
       format.html do
         if food.save
-          flash[:success] = "Food created successfully"
+          flash[:success] = 'Food created successfully'
           redirect_to foods_path
         else
-          flash.now[:error] = "Error: Food could not be created"
+          flash.now[:error] = 'Error: Food could not be created'
           render :new
         end
       end
@@ -24,7 +24,7 @@ class FoodsController < ActionController::Base
     @food = @user.foods.find(params[:id])
     @food.destroy
     redirect_to foods_path
-    flash[:success] = "Food was deleted!"
+    flash[:success] = 'Food was deleted!'
   end
 
   private
