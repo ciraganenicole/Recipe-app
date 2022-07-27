@@ -1,0 +1,18 @@
+<h1>Add a new Food</h1>
+<%= form_with model: @food do |f| %>
+  <div class="mb-3">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= f.label :measurement_unit %>
+    <%= f.text_field :measurement_unit, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= f.label :price %>
+    <%= f.number_field :price, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

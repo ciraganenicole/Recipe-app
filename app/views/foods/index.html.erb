@@ -1,0 +1,20 @@
+<div class="table">
+  <table class="table table-bordered">
+    <tr>
+      <th>Food</th>
+      <th>Measurement Unit</th>
+      <th>Unit Price</th>
+      <th>Action</th>
+    </tr>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%=food.name%></td>
+        <td><%=food.measurement_unit%></td>
+        <td><%=food.price%>$</td>
+        <td>
+          <%= button_to "Delete", food_path(food.id), html: {'data-turbo' => "false"}, :method => :delete, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
