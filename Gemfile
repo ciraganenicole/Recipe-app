@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
 
+gem 'bootstrap', '~> 5.1', '>= 5.1.3'
+
+gem 'bootstrap_form', '~> 5.1'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 
@@ -70,3 +74,6 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'rubocop', '>= 1.0', '< 2.0'
