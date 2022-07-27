@@ -1,21 +1,18 @@
 class InventoriesController < ApplicationController
+  before_action do
+    @user = User.first
+  end
+
   def index
-    @user = current_user
-    @inventories = Inventory.all
+    @inventories = @user.Inventories.all
   end
 
   def new
-    @user = current_user
     @inventory = Inventory.new
   end
 
   def create
-    @user = current_user
-    unless @user.present?
-      flash[:error] = 'Error: You have to sign in first!'
-      redirect_to inventories_path
-    end
-    inventory = Inventory.new(inventory_params.merge(user: current_user))
+    inventory = Inventory.new(inventory_params.merge(user: @user))
     respond_to do |format|
       format.html do
         if inventory.save
@@ -30,12 +27,10 @@ class InventoriesController < ApplicationController
   end
 
   def show
-    @user = current_user
     @inventory = Inventory.find(params[:id])
   end
 
   def destroy
-    @user = current_user
     inventory = Inventory.find(params[:id])
     inventory.destroy
     flash[:success] = 'Inventory successfully deleted'
