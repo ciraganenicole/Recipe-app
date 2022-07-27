@@ -40,7 +40,7 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    @recipes = Recipe.where(public: true).all
+    @recipes = Recipe.where(public: true).all.order('created_at DESC')
   end
 
   private
