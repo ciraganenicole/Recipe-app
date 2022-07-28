@@ -1,0 +1,25 @@
+<div class="flex flex-col mt-6 gap-12 w-[50rem] mx-auto">
+  <h1 class="text-center text-3xl font-bold text-slate-800">Shopping List</h1>
+  <div class="flex flex-row justify-between font-bold px-10 text-slate-700">
+    <p>Amount of food items to buy: <%= @food_count %></p>
+    <p>Total value of food needed: <%= @total_price %>$</p>
+  </div>
+  <table class="table-auto border border-slate-600">
+    <thead>
+      <tr class="bg-gray-500 text-white">
+        <th class="px-4 py-2">Food</th>
+        <th class="px-4 py-2">Quantity</th>
+        <th class="px-4 py-2">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @all_foods.each do |food| %>
+        <tr class="odd:bg-gray-200 border-x border-slate-600">
+          <td class="px-4 py-2 text-center"><%= food[:name] %></td>
+          <td class="px-4 py-2 text-center"><%= food[:quantity] %> <%= food[:measurement] %></td>
+          <td class="px-4 py-2 text-center">$<%= food[:price] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
