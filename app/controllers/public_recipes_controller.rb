@@ -13,4 +13,8 @@ class PublicRecipesController < ApplicationController
     #   @public_recipe_data << public_recipe_data_unit
     # end
   end
+
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
 end

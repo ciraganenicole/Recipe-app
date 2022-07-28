@@ -6,7 +6,7 @@
     <% @public_recipes.each do |recipe| %>
       <div class="d-flex flex-row justify-content-between card p-3 mb-3">
         <div>
-          <h2><%= link_to recipe.name, recipe_path(recipe.id) %></h2>
+          <h2><%= link_to recipe.name, public_recipe_path(recipe.id) %></h2>
           <p>By: <%= recipe.user.name%></p>
         </div>
         <div>

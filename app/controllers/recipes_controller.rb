@@ -1,7 +1,11 @@
 class RecipesController < ApplicationController
   before_action do
     # No current_user for now
-    @user = User.first
+    @user = current_user
+    unless @user.present?
+      flash[:error] = 'You are not signed in, sign in to continue!'
+      redirect_to new_user_session_path
+    end
   end
 
   def index
@@ -37,10 +41,6 @@ class RecipesController < ApplicationController
     recipe.destroy
     flash[:success] = 'Recipe successfully deleted'
     redirect_to recipes_path
-  end
-
-  def public_recipes
-    @recipes = Recipe.where(public: true).all.order('created_at DESC')
   end
 
   private
