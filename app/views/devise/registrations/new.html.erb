@@ -4,7 +4,7 @@
 <div class="d-flex flex-column align-items-center">
   <%= render "devise/shared/error_messages", resource: resource %>
  <div class= "d-flex flex-column align-items-center w-75 mb-3"> 
-    <%= f.text_field :name ,class: "form-control w-75 mb-4", placeholder: "Name" %>
+    <%= f.text_field :name , class: "form-control w-75 mb-4", placeholder: "Name" %>
 
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control w-75 mb-4", placeholder: "Email" %>
 
@@ -15,7 +15,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password",  class: "form-control w-75 mb-4", placeholder: "Confirm password" %>
 
     <%= f.submit "Sign up", class: "form-control w-75 btn btn-primary"%>
-    </div>
+  </div>
 <% end %>
 
 <%= render "devise/shared/links" %>

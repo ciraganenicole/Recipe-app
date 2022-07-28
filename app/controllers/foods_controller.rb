@@ -1,11 +1,15 @@
-class FoodsController < ActionController::Base
+class FoodsController < ApplicationController
   def index
     @foods = Food.all
   end
 
   def new
+    @food = Food.new
+  end
+
+  def create
     @user = current_user
-    food = @user.foods.new(food_params)
+    food = Food.new(food_params)
     respond_to do |format|
       format.html do
         if food.save
@@ -21,7 +25,7 @@ class FoodsController < ActionController::Base
 
   def destroy
     @user = current_user
-    @food = @user.foods.find(params[:id])
+    @food = Food.find(params[:id])
     @food.destroy
     redirect_to foods_path
     flash[:success] = 'Food was deleted!'

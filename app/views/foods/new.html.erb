@@ -1,18 +1,11 @@
-<h1>Add a new Food</h1>
-<%= form_with model: @food do |f| %>
-  <div class="mb-3">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control"%>
-  </div>
-  <div class="mb-3">
-    <%= f.label :measurement_unit %>
-    <%= f.text_field :measurement_unit, class: "form-control"%>
-  </div>
-  <div class="mb-3">
-    <%= f.label :price %>
-    <%= f.number_field :price, class: "form-control"%>
-  </div>
-  <div class="mb-3">
-    <%= f.submit class: "btn btn-primary" %>
+<h1 class="text-center mb-4">Add a new Food</h1>
+<%= form_with(model: @food, url: foods_path) do |form| %>
+  <div class="d-flex flex-column align-items-center">
+    <div class='d-flex flex-column align-items-center w-75 mb-3'>
+      <%= form.text_field :name, placeholder: 'Enter name', class: "form-control w-75 mb-4" %>
+      <%= form.text_field :measurement_unit, class: "form-control w-75 mb-4", placeholder: 'Measurement unit' %>
+      <%= form.number_field :price, step: :any, class: "form-control w-75 mb-4", placeholder: 'Price' %>
+      <%= form.submit 'Save Food', class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>
