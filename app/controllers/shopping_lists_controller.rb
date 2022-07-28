@@ -1,4 +1,6 @@
 class ShoppingListsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @all_foods = current_user
       .recipes

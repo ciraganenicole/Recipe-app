@@ -1,10 +1,11 @@
 class InventoriesController < ApplicationController
   before_action do
-    @user = User.first
+    authenticate_user!
+    @user = current_user
   end
 
   def index
-    @inventories = @user.Inventories.all
+    @inventories = @user.inventories.all
   end
 
   def new

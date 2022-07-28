@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resources :foods, only: [:index, :show, :new, :create, :destroy]
   resources :inventories, only: [:index, :show, :new, :create, :destroy]
-  resources :recipes, except: [:update] 
+  resources :recipes, except: [:update] do
+    resources :recipe_foods, only: [:new, :create]
+  end
   resources :public_recipes, only: [:index, :show]
   resources :shopping_lists, only: [:index]
   root "public_recipes#index"

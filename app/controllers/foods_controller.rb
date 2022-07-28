@@ -1,6 +1,11 @@
 class FoodsController < ApplicationController
+  before_action do
+    authenticate_user!
+    @user = current_user
+  end
+
   def index
-    @foods = Food.all
+    @foods = @user.foods
   end
 
   def new
@@ -8,8 +13,7 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    food = Food.new(food_params)
+    food = Food.new(food_params.merge(user: @user))
     respond_to do |format|
       format.html do
         if food.save

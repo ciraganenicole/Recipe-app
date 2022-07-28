@@ -1,11 +1,8 @@
 class RecipesController < ApplicationController
   before_action do
-    # No current_user for now
+    authenticate_user!
     @user = current_user
-    unless @user.present?
-      flash[:error] = 'You are not signed in, sign in to continue!'
-      redirect_to new_user_session_path
-    end
+    @foods = RecipeFood.find_by(recipe: @recipe)
   end
 
   def index

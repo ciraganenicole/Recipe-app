@@ -1,17 +1,17 @@
 <h1 class="text-center mb-4">Add New Recipe</h1>
 <%= form_with(model: @recipe, url: recipes_path) do |form| %>
 <div class="d-flex flex-column align-items-center">
-<div class='d-flex flex-column align-items-center w-75 mb-3'>
-  <%= form.text_field :name, placeholder: 'Enter name', class: "form-control w-75 mb-4" %>
-  <%= form.text_area :description, size: "20x5", class: "form-control w-75 mb-4", placeholder: 'Add description...' %>
-  <%= form.number_field :preparation_time, step: :any, class: "form-control w-75 mb-4", placeholder: 'Preparation time' %>
-  <%= form.number_field :cooking_time, step: :any, class: "form-control w-75 mb-4", placeholder: 'Cooking time' %>
-  <div class='form-check form-switch mb-3'>
-    <%= form.label :public, class: 'form-check-label'%>
-    <%= form.check_box :public, class: 'form-check-input'%>
+  <div class='d-flex flex-column align-items-center w-75 mb-3'>
+    <%= form.text_field :name, placeholder: 'Enter name', class: "form-control w-75 mb-4" %>
+    <%= form.text_area :description, size: "20x5", class: "form-control w-75 mb-4", placeholder: 'Add description...' %>
+    <%= form.number_field :preparation_time, step: :any, class: "form-control w-75 mb-4", placeholder: 'Preparation time' %>
+    <%= form.number_field :cooking_time, step: :any, class: "form-control w-75 mb-4", placeholder: 'Cooking time' %>
+    <div class='form-check form-switch mb-3'>
+      <%= form.label :public, class: 'form-check-label'%>
+      <%= form.check_box :public, class: 'form-check-input'%>
+    </div>
+    <%= form.submit 'Save Recipe', class: 'btn btn-primary' %>
   </div>
-  <%= form.submit 'Save Recipe', class: 'btn btn-primary' %>
-</div>
 </div>
 
 <% end %>

@@ -1,0 +1,23 @@
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% recipe.recipe_foods.each do |recipe_food| %>
+        <tr>
+          <td class='w-25'><%= recipe_food.food.name %></td>
+          <td class='w-25'><%= recipe_food.quantity %> <%= recipe_food[:measurement] %></td>
+          <td class='w-25'>$<%= recipe_food.quantity * recipe_food.food.price %></td>
+          <td class='d-flex'>
+            <%= button_to 'Modify', method: :patch, class: 'btn btn-link' %>
+            <%= button_to 'Remove', method: :delete, class: 'btn btn-link' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

@@ -1,6 +1,9 @@
-<h1>Add New Inventory</h1>
-<%= bootstrap_form_with(model: @inventory, url: inventories_path) do |form| %>
-  <%= form.text_field :name, placeholder: 'Enter name' %>
-  <%= form.text_area :description, size: "20x5", placeholder: 'Add description...' %>
-  <%= form.submit 'Save Inventory' %>
+<h1 class="text-center mb-4">Add New Inventory</h1>
+<%= form_with(model: @inventory, url: inventories_path) do |form| %>
+  <div class="d-flex flex-column align-items-center">
+    <div class='d-flex flex-column align-items-center w-75 mb-3'>
+      <%= form.text_field :name, placeholder: 'Enter name', class: "form-control w-75 mb-4"  %>
+      <%= form.submit 'Save Inventory', class: 'btn btn-primary' %>
+    </div>
+  </div>
 <% end %>
