@@ -22,7 +22,7 @@
       <% @all_foods.each do |food| %>
         <tr>
           <td><%= food[:name] %></td>
-          <td><%= food[:quantity] %> <%= food[:measurement] %></td>
+          <td><%= food.recipe_foods.where(food: food).pluck('quantity')[0] %> <%= food[:measurement] %></td>
           <td>$<%= food[:price] %></td>
         </tr>
       <% end %>
