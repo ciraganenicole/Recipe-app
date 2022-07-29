@@ -1,0 +1,12 @@
+<div class="d-flex flex-column mt-6 gap-12 w-[50rem] mx-auto">
+  <h1 class="text-center text-3xl font-bold text-slate-800">Generating shopping List</h1>
+  <div>
+  <h2>Choose an inventory to use</h2>
+
+  <%= select("inventory", "inventory_id", Inventory.all.collect {|i| [ i.name, i.id ] }, { include_blank: true }) %>
+   <%=form_with url: shopping_lists_path, method: :get do %>
+        <button class="btn btn-primary">Generate</button>
+      <% end %>
+  </div>
+  
+</div>
