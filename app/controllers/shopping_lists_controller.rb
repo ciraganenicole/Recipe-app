@@ -2,6 +2,10 @@ class ShoppingListsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @recipe = Recipe.includes(:foods).find(params[:recipe_id])
+    p @recipe
+    # @recipe_foods = @recipe.foods
+    # @inventory = Inventory
     @all_foods = current_user
       .recipes
       .includes([:recipe_foods])

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   resources :public_recipes, only: [:index, :show]
   resources :shopping_lists, only: [:index]
-  resources :generate_shopping_lists, only: [:index]
+  get '/recipes/:recipe_id/generate_shopping_lists', to: 'generate_shopping_lists#index', as: 'generate_shopping_lists'
+  # resources :generate_shopping_lists, only: [:index]
   root "public_recipes#index"
 end

@@ -17,7 +17,7 @@
     
   <div class='d-flex flex-row justify-content-between px-5 mt-5'>
     <div>
-      <%=form_with url: generate_shopping_lists_path, method: :get do %>
+      <%=form_with url: generate_shopping_lists_path(@recipe.id), method: :get do %>
         <button class="btn btn-primary">Generate shopping list</button>
       <% end %>
     </div>

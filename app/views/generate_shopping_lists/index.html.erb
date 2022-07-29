@@ -3,8 +3,9 @@
   <div>
   <h2>Choose an inventory to use</h2>
 
-  <%= select("inventory", "inventory_id", Inventory.all.collect {|i| [ i.name, i.id ] }, { include_blank: true }) %>
-   <%=form_with url: shopping_lists_path, method: :get do %>
+  <%= select("inventory", "inventory_id", @inventories.collect {|i| [ i.name, i.id ] }, { include_blank: true }) %>
+   <%=form_with url: shopping_lists_path, method: :get do |form|%>
+        <%= form.hidden_field :recipe_id, value: @recipe_id%>
         <button class="btn btn-primary">Generate</button>
       <% end %>
   </div>
