@@ -1,11 +1,19 @@
-class FoodsController < ActionController::Base
+class FoodsController < ApplicationController
+  before_action do
+    authenticate_user!
+    @user = current_user
+  end
+
   def index
-    @foods = Food.all
+    @foods = @user.foods
   end
 
   def new
-    @user = current_user
-    food = @user.foods.new(food_params)
+    @food = Food.new
+  end
+
+  def create
+    food = Food.new(food_params.merge(user: @user))
     respond_to do |format|
       format.html do
         if food.save
@@ -21,7 +29,7 @@ class FoodsController < ActionController::Base
 
   def destroy
     @user = current_user
-    @food = @user.foods.find(params[:id])
+    @food = Food.find(params[:id])
     @food.destroy
     redirect_to foods_path
     flash[:success] = 'Food was deleted!'

@@ -1,32 +1,30 @@
-<% if @user == @recipe.user || @recipe.public? %>
+<% if @user == @recipe.user %>
   <h1 class="text-center mb-4"><%= @recipe.name %></h1>
   <div class='d-flex flex-row justify-content-between px-5'>
     <div>
       <h4>Preparation time: <%= @recipe.preparation_time %></h4>
       <h4>Cooking time: <%= @recipe.cooking_time %></h4>
+      <h4>Steps to follow:</h4>
+      <h5><%= @recipe.description %></h5>
     </div>
-    <% if @user == @recipe.user %>
-      <div>
-        <%= button_to 'ADD NEW FOOD', new_recipe_path,method: :get, class: 'btn btn-primary' %>
-      </div>
-      <% else %>
       <div class='d-flex flex-row'>
         <label class="mx-2" for="public">Public</label>
         <div class='form-check form-switch'>
-          <input class="form-check-input" type="checkbox" id="public" checked>
+          <input class="form-check-input" type="checkbox" id="public" <%= 'checked' if @recipe.public? %> disabled>
         </div>
       </div>
-    <% end %>
   </div>
+    
   <div class='d-flex flex-row justify-content-between px-5 mt-5'>
     <div>
-      <%=form_with url: shopping_lists_path, method: :get do %>
-        <button class="rounded px-8 py-4 shadow-sm border-2">Generate shopping list</button>
+      <%=form_with url: generate_shopping_lists_path, method: :get do %>
+        <button class="btn btn-primary">Generate shopping list</button>
       <% end %>
     </div>
-    <button>Add ingredient</button>
+    <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn btn-primary'%>
   </div>
   <hr style="padding: 0 100px; border-top: 2px solid black">
+  <%= render partial: "recipes/ingredients_table", locals: { recipe: @recipe } %>   
 <% else %>
   <h1 class="text-center mb-4"> You cannot access this recipe's details</h1>
 <% end %>

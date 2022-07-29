@@ -1,7 +1,8 @@
 class RecipesController < ApplicationController
   before_action do
-    # No current_user for now
-    @user = User.first
+    authenticate_user!
+    @user = current_user
+    @foods = RecipeFood.find_by(recipe: @recipe)
   end
 
   def index
@@ -39,13 +40,9 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
-  def public_recipes
-    @recipes = Recipe.where(public: true).all.order('created_at DESC')
-  end
-
   private
 
   def recipe_params
-    params.require('recipe').permit(:name, :description, :cooking_time, :preparation_time)
+    params.require('recipe').permit(:name, :description, :cooking_time, :preparation_time, :public)
   end
 end
