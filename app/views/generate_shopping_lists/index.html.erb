@@ -2,10 +2,7 @@
   <h1 class="text-center text-3xl font-bold text-slate-800">Generating shopping List</h1>
   <div>
     <h2>Choose an inventory to use</h2>
-
-    <%= select("inventory", "inventory_id", @inventories.collect {|i| [ i.name, i.id ] }, { include_blank: true }) %>
-    <%= link_to "Generate", {:controller => "shopping_lists", :action => "index", recipe_id: @recipe_id, inventory_id: params[:inventory]}%>
-    <%= form_with(url: shopping_lists_path, method: :get) do |form| %>
+    <%= bootstrap_form_with(url: shopping_lists_path, method: :get) do |form| %>
       <%= form.hidden_field :recipe_id, value: @recipe_id %>
       <%= form.select :inventory_id, @inventories.collect {|i| [ i.name, i.id ] }, { include_blank: true } %>
       <%= form.submit 'Generate', class: 'btn btn-primary mt-3' %>
