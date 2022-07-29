@@ -1,9 +1,9 @@
 <h1 class="text-center mb-4">Public Recipes</h1>
 <div class="m-5">
-  <% unless @recipes.first %>
+  <% unless @public_recipe_data.first %>
     <h2>No public recipe available</h2>
   <% else %>
-    <% @recipes.each do |recipe| %>
+    <% @public_recipe_data.each do |recipe| %>
       <div class="d-flex flex-row justify-content-between card p-3 mb-3">
         <div>
           <h2><%= link_to recipe.name, recipe_path(recipe.id) %></h2>
