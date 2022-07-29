@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "InventoryFoods", type: :feature do
+RSpec.feature 'InventoryFoods', type: :feature do
   before(:each) do
     @user = User.new(name: 'Test User', email: 'example@gmail.com', password: 'password')
     @food = Food.new(name: 'Test Food', measurement_unit: 'kilo', price: 15, user: @user)

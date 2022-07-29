@@ -1,6 +1,5 @@
 require 'rails_helper'
-
-RSpec.feature "Inventories", type: :feature do
+RSpec.feature 'Inventories', type: :feature do
   before(:each) do
     @user = User.new(name: 'Test User', email: 'example@gmail.com', password: 'password')
     @inventory = Inventory.new(name: 'Test Inventory', user: @user)

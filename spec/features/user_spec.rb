@@ -1,6 +1,5 @@
 require 'rails_helper'
-
-RSpec.feature "Users", type: :feature do
+RSpec.feature 'Users', type: :feature do
   before(:each) do
     @user = User.new(name: 'Test User', email: 'example@gmail.com', password: 'password')
   end

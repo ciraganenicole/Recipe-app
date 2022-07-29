@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Food, type: :model do
   subject do
     user = User.create(name: 'John', email: 'john@example.com', password: 'password')
-    Food.new(name: 'Food 1', measurement_unit: 'KG', price: 20, user: user)
+    Food.new(name: 'Food 1', measurement_unit: 'KG', price: 20, user:)
   end
 
   before { subject.save }
