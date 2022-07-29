@@ -5,12 +5,17 @@ class FoodsController < ActionController::Base
 
   def new
     @user = current_user
+    @food = @user.foods.new
+  end
+
+  def create
+    @user = current_user
     food = @user.foods.new(food_params)
     respond_to do |format|
       format.html do
         if food.save
           flash[:success] = 'Food created successfully'
-          redirect_to foods_path
+          redirect_to foods_url
         else
           flash.now[:error] = 'Error: Food could not be created'
           render :new

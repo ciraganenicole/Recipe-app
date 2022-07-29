@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipe App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <%= render "partials/nav" %>
+
+    <section class="body">
+
+      <div class="heading">
+      <h1>Shopping List</h1>
+      </div>
+
+      <div class="para">
+        <h3>Amount of food items to buy: <%=@food_count%></h3>
+        <h3>Total value of food needed: $<%=@total%></h3>
+      </div>
+
+      <div class="table">
+      <table class="table table-bordered">
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+
+      <% @recipe_foods.each do |gk| %>
+        <% if @foods.include?(gk.food)%>
+          <tr>
+            <td><%=gk.food.name%></td>
+            <td><%=gk.quantity%> <%=Food.find(gk.food_id).measurement_unit%></td>
+            <td> $<%=gk.food.price * gk.quantity%></td>
+          </tr>
+        <%end%>
+      <%end%>
+
+      </table>
+    </div>
+    </section>
+
+    <script type="text/javascript">
+    document.querySelector('.navbar-toggler').addEventListener("click", () => {
+      console.log('yess')
+        $("button.navbar-toggle").toggleClass("collapse");
+    })
+</script>
+  </body>
+</html>

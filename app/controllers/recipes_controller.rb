@@ -1,25 +1,27 @@
-class RecipesController < ApplicationController
-  before_action do
-    # No current_user for now
-    @user = User.first
+class RecipesController < ActionController::Base
+  def index
+    @user = current_user
+    @recipes = @user.recipes.all
   end
 
-  def index
-    @recipes = @user.recipes
+  def show
+    @recipe = Recipe.find(params[:id])
+    @recipe_foods = @recipe.recipeFoods.all
   end
 
   def new
-    @recipe = Recipe.new
-    p params[:recipe]
+    @user = current_user
+    @recipe = @user.recipes.new
   end
 
   def create
-    recipe = Recipe.new(recipe_params.merge(user: @user))
+    @user = current_user
+    recipe = @user.recipes.new(recipe_params)
     respond_to do |format|
       format.html do
         if recipe.save
-          flash[:success] = 'New Recipe created'
-          redirect_to recipes_path
+          flash[:success] = 'Recipe created successfully'
+          redirect_to recipes_url
         else
           flash.now[:error] = 'Error: Recipe could not be created'
           render :new
@@ -28,24 +30,17 @@ class RecipesController < ApplicationController
     end
   end
 
-  def show
-    @recipe = Recipe.find(params[:id])
-  end
-
   def destroy
-    recipe = Recipe.find(params[:id])
-    recipe.destroy
-    flash[:success] = 'Recipe successfully deleted'
-    redirect_to recipes_path
-  end
-
-  def public_recipes
-    @recipes = Recipe.where(public: true).all.order('created_at DESC')
+    @user = current_user
+    @recipe = @user.recipes.find(params[:id])
+    @recipe.destroy
+    redirect_to recipe_path
+    flash[:success] = 'Recipe was deleted!'
   end
 
   private
 
   def recipe_params
-    params.require('recipe').permit(:name, :description, :cooking_time, :preparation_time)
+    params.require(:recipe).permit(:name, :preperation_time, :cooking_time, :public, :description)
   end
 end

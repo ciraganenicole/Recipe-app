@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/foods">Recipe App</a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  <div class="navbar-collapse collapse show" id="navbarColor01" style="">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item <%= active_class(foods_path) %>">
+        <%= link_to 'Foods', foods_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item <%= active_class(recipes_path) %>">
+        <%= link_to 'Recipes', recipes_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item <%= active_class(public_index_path) %>">
+        <%= link_to 'Public Recipes', public_index_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item <%= active_class(general_index_path) %>">
+        <%= link_to 'General Shopping List', general_index_path, class: 'nav-link' %>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav">
+  <% if user_signed_in? %>
+    <li class="nav-item">
+      <%= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Sign Out", destroy_user_session_path, method: :get, class: 'nav-link' %>
+    </li>
+  <% else %>
+    <li class="nav-item">
+      <%= link_to "Sign In", new_user_session_path, class: 'nav-link'  %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+    </li>
+  <% end %>
+</ul>
+  </div>
+</nav>
+
+<% if user_signed_in? %>
+  <p class="email-display">Logged in as <strong><%= current_user.email %></strong>.</p>
+<% else %>
+  <p class="email-display">Please Login<p>
+<% end %>

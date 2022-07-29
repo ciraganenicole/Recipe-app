@@ -1,11 +1,55 @@
-<h1 class="text-center mb-4">Add New Recipe</h1>
-<%= bootstrap_form_with(model: @recipe, url: recipes_path) do |form| %>
-  <%= form.text_field :name, placeholder: 'Enter name' %>
-  <%= form.text_area :description, size: "20x5", placeholder: 'Add description...' %>
-  <%= form.number_field :preparation_time, step: :any, placeholder: 'Preparation time' %>
-  <%= form.number_field :cooking_time, step: :any, placeholder: 'Cooking time' %>
-  <div class='form-check form-switch'>
-    <%= form.check_box :public %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipe App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+
+  <section class="body">  
+  <h1>Add a new Recipe</h1>
+
+  <%= form_with model: @recipe do |f| %>
+  
+  <div class="mb-3">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control"%>
   </div>
-  <%= form.submit 'Save Recipe' %>
-<% end %>
+
+  <div class="mb-3">
+    <%= f.label :cooking_time %>
+    <%= f.text_field :cooking_time, class: "form-control"%>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :preperation_time %>
+    <%= f.text_field :preperation_time, class: "form-control"%>
+  </div>
+
+  <div class="mb-3">
+    <%= f.check_box :public%>
+    <%= f.label :public %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control"%>
+  </div>
+
+    <div class="mb-3">
+     <%= f.submit class: "btn btn-primary" %>
+     </div>
+  
+    <% end %>
+    </section>
+
+  </body>
+</html>
+   
+   

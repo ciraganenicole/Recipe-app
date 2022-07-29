@@ -1,18 +1,48 @@
-<h1>Add a new Food</h1>
-<%= form_with model: @food do |f| %>
-  <div class="mb-3">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control"%>
-  </div>
-  <div class="mb-3">
-    <%= f.label :measurement_unit %>
-    <%= f.text_field :measurement_unit, class: "form-control"%>
-  </div>
-  <div class="mb-3">
-    <%= f.label :price %>
-    <%= f.number_field :price, class: "form-control"%>
-  </div>
-  <div class="mb-3">
-    <%= f.submit class: "btn btn-primary" %>
-  </div>
-<% end %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipe App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+
+    <section class="body">  
+      <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+      <h1>Add a new Food</h1>
+
+      <%= form_with model: @food do |f| %>
+      
+        <div class="mb-3">
+          <%= f.label :name %>
+          <%= f.text_field :name, required: true, class: "form-control"%>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :measurement_unit %>
+          <%= f.text_field :measurement_unit, required: true, class: "form-control"%>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :price %>
+          <%= f.number_field :price, required: true, min: 1, class: "form-control"%>
+        </div>
+
+        <div class="mb-3">
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+      
+      <% end %>
+      
+    </section>
+
+  </body>
+</html>
+   
+   

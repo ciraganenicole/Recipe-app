@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipe App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+
+  <section class="body">  
+  <h1>Add a new Ingredient</h1>
+
+  <%= form_with model: [@recipe, @recipe.recipeFoods.create] do |f| %>
+
+  <div class="mb-3">
+    <%= f.label :food%>
+    <%= f.select :food_id, current_user.foods.collect { |food| [food.name, food.id]}, {include_blank: true}, class: "form-control"%>
+  </div>
+
+    <div class="mb-3">
+      <%= f.label :quantity %></div>
+      <%= f.number_field :quantity, class: "form-control", required: true, placeholder: '1',  min: 1 %>
+    </div>
+
+    <div class="mb-3"></div>
+
+
+    <div class="mb-3">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+
+    <%end%>
+
+  </section>
+
+  </body>
+</html>
