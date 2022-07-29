@@ -1,0 +1,110 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ */
+
+/*
+ *= require jquery-ui
+ */
+@import "bootstrap";
+
+.body {
+  margin: 20px;
+}
+
+.add-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.navbar-brand {
+  margin-left: 20px;
+  margin-right: 35vw;
+}
+
+.recipe-border {
+  border: rgb(41, 40, 40) solid 2px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: center;
+}
+
+.equal {
+  grid-template-columns: 1fr 1fr;
+}
+
+.recipe-border h2 {
+  margin-bottom: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+}
+
+.para {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.nav-item {
+  margin-left: 20px;
+}
+
+.navbar-toggler {
+  margin-right: 20px;
+}
+
+@media only screen and (min-width: 990px) and (max-width: 1300px) {
+  .navbar-brand {
+    margin-right: 20vw;
+  }
+}
+
+.grid {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 40px 40px 60px;
+}
+
+.grid h3 {
+  margin-bottom: 20px;
+}
+
+hr {
+  border: 1px solid black;
+  margin-inline: 40px;
+}
+
+.flex-btn {
+  display: flex;
+  justify-content: space-around;
+}
+
+.email-display {
+  padding: 10px 20px;
+}
+
+.notice {
+  padding: 10px 20px;
+}

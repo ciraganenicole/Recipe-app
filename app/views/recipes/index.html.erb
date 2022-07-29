@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipe App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", async: true %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+
+    <%= render "partials/nav" %>
+    
+    <section class="body">
+
+    <div class="add-btn">
+      <%= link_to 'recipes/new', :remote => true do %>
+      <input type="button" class="btn btn-primary" value="Add Recipe">
+      <% end %>
+    </div>
+
+      <% @recipes.each do |recipe| %>
+     
+
+        <div class= "recipe-border">
+          <div>
+           <%= link_to recipe_path(recipe.id), :remote => true do %>
+            <h2><%=recipe.name%></h2>
+            <% end %>
+            <%= button_to "Delete", recipe_path(recipe.id), html: {'data-turbo' => "false"}, :method => :delete, class: "btn btn-danger" %>
+          </div>
+          <h3><%=recipe.description%></h3>
+        </div>
+        
+      
+      <% end %>
+
+    </section>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipe App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <%= render "partials/nav" %>
+    <section class="body">
+     <h1 class="heading">Public Recipes</h1>
+
+    <% @recipes.each do |recipe| %>
+
+    <div class= "recipe-border equal">
+
+      <div>
+      <%= link_to recipe_path(recipe.id), :remote => true do %>
+        <h2><%=recipe.name%></h2>
+        <%end%>
+        <h4>By: <%=recipe.user.name%></h4>
+      </div>
+
+      <div>
+        <h4>Total food Items: <%=Recipe.items(recipe.id)%></h4>
+        <h4>Total Price: $<%=Recipe.total_value(recipe.id)%></h4>
+      </div>
+    </div>
+
+    <% end %>
+    </section>
+  </body>
+</html>
