@@ -3,9 +3,7 @@ class ShoppingListsController < ApplicationController
 
   def index
     @recipe = Recipe.includes(:foods).find(params[:recipe_id])
-    p @recipe
-    # @recipe_foods = @recipe.foods
-    # @inventory = Inventory
+    @inventory = Inventory.includes(:foods).find(params[:inventory_id])
     @all_foods = current_user
       .recipes
       .includes([:recipe_foods])

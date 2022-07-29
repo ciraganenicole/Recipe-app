@@ -6,8 +6,8 @@
       <p>Total value of food needed: $<%= @total_price %></p>
     </div>
     <div>
-      <p>Recipe: <%= %> </p>
-      <p>inventory: </p>
+      <p>Recipe: <%= link_to @recipe.name, recipe_path(@recipe.id) %> </p>
+      <p>inventory: <%= link_to @inventory.name, inventory_path(@inventory.id) %></p>
     </div>
   </div>
   <table class="table table-bordered">
