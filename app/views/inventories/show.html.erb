@@ -1,19 +1,21 @@
-<div class="table">
-  <%= button_to 'ADD NEW FOOD', new_food_path, method: :get, class: 'btn btn-primary float-end my-3' %>
-  <table class="table table-bordered">
+<h1 class="text-center mb-4"><%= @inventory.name %></h1>
+<%= button_to 'Add Food', new_inventory_inventory_food_path(@inventory), method: :get, class: 'btn btn-primary float-end mb-3' %>
+<br>
+<br>
+<hr style="border-bottom: 2px solid black; width: 100%">
+<table class="table table-bordered">
+  <tr>
+    <th>Food</th>
+    <th>Quantity</th>
+    <th>Actions</th>
+  </tr>
+  <% @inventory.inventory_foods.each do |inventory_food| %>
     <tr>
-      <th>Food</th>
-      <th>Quantity</th>
-      <th>Actions</th>
+      <td><%=inventory_food.food.name%></td>
+      <td><%=inventory_food.quantity%></td>
+      <td>
+        <%= button_to "Remove", inventory_inventory_food_path(inventory_food.inventory), html: {'data-turbo' => "false"}, :method => :delete, class: "btn btn-link" %>
+      </td>
     </tr>
-    <% @inventory.foods.each do |food| %>
-      <tr>
-        <td><%=food.name%></td>
-        <td><%=food.quantity%></td>
-        <td>
-          <%= button_to "Delete", food_path(food.id), html: {'data-turbo' => "false"}, :method => :delete, class: "btn btn-danger" %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-</div>
+  <% end %>
+</table>

@@ -1,6 +1,6 @@
 <h2 class="text-center my-4">Add Ingredient!</h2>
 <%= bootstrap_form_with(model: @recipe_food, url: recipe_recipe_foods_path) do |form| %>
     <%= form.number_field :quantity, placeholder: 'Quantity', min: 0, class: "form-control mb-4" %>
-    <%= form.collection_select :food_id, @recipe.user.foods, :id, :name, class: "form-select", options: {:prompt => "(Select a question)"} %>
+    <%= form.collection_select :food_id, @recipe.user.foods, :id, :name, class: "form-select" %>
     <%= form.submit 'Save Ingredient', class: 'btn btn-primary mt-3' %>
 <% end %>
